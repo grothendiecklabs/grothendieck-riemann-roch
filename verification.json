@@ -1,0 +1,1697 @@
+{
+  "ok": true,
+  "goal": {
+    "title": "Grothendieck–Riemann–Roch",
+    "name": "GRR.grothendieck_riemann_roch",
+    "ok": true,
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "signature": "∀ (k : Type u_1) [inst : Field k] {X Y : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sY] (f : X ⟶ Y) (hf : CategoryTheory.CategoryStruct.comp f sY = sX) (hproj : AlgebraicGeometry.IsProjectiveMorphism f) (α : AlgebraicGeometry.CoherentKZero X), (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) sX sY hf) ((GRR.tau k sX) α) = (GRR.tau k sY) ((GRR.pushforwardK f) α)"
+  },
+  "checked": 118,
+  "failed": 0,
+  "cards": [
+    {
+      "title": "Grothendieck–Riemann–Roch",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.grothendieck_riemann_roch",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X Y : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sY] (f : X ⟶ Y) (hf : CategoryTheory.CategoryStruct.comp f sY = sX) (hproj : AlgebraicGeometry.IsProjectiveMorphism f) (α : AlgebraicGeometry.CoherentKZero X), (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) sX sY hf) ((GRR.tau k sX) α) = (GRR.tau k sY) ((GRR.pushforwardK f) α)"
+        }
+      ]
+    },
+    {
+      "title": "$Q(x)\\,(1-e^{-x}) = x$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.toddSeries_mul_one_sub_expNeg",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "GRR.toddSeries * (1 - GRR.expNeg) = PowerSeries.X"
+        }
+      ]
+    },
+    {
+      "title": "The coefficient of $x^n$ in $e^{dx}Q^{n+1}$ is $\\binom{n+d}{n}$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.coeff_exp_pow_mul_toddSeries_pow",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (n d : ℕ), (PowerSeries.coeff n) (PowerSeries.exp ℚ ^ d * GRR.toddSeries ^ (n + 1)) = ↑((n + d).choose n)"
+        }
+      ]
+    },
+    {
+      "title": "The coefficient of $x^n$ in $e^{-jx}Q^{n+1}$ vanishes for $1\\le j\\le n$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.coeff_expNeg_pow_mul_toddSeries_pow",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {n j : ℕ}, 1 ≤ j → j ≤ n → (PowerSeries.coeff n) (GRR.expNeg ^ j * GRR.toddSeries ^ (n + 1)) = 0"
+        }
+      ]
+    },
+    {
+      "title": "$Q=\\exp(\\log Q)$, coefficient by coefficient",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.coeff_toddSeries_eq_coeff_sum_logTodd_pow",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (n : ℕ), (PowerSeries.coeff n) GRR.toddSeries = (PowerSeries.coeff n) (∑ j ∈ Finset.range (n + 1), (↑j.factorial)⁻¹ • GRR.logTodd ^ j)"
+        }
+      ]
+    },
+    {
+      "title": "$\\exp(x+y)=\\exp(x)\\exp(y)$ for commuting $x,y$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.GradedComplete.gexp_add",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R) {x y : R}, (G.comp 0) x = 0 → (G.comp 0) y = 0 → Commute x y → G.gexp (x + y) = G.gexp x * G.gexp y"
+        },
+        {
+          "name": "GRR.GradedComplete.gexp_zero",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R), G.gexp 0 = 1"
+        },
+        {
+          "name": "GRR.GradedComplete.isUnit_gexp",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R) {x : R}, (G.comp 0) x = 0 → IsUnit (G.gexp x)"
+        }
+      ]
+    },
+    {
+      "title": "$F\\mapsto F(h)$ is a ring map",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.GradedComplete.ev_mul",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R) {h : R}, (G.comp 0) h = 0 → ∀ (F F' : PowerSeries ℚ), G.ev h (F * F') = G.ev h F * G.ev h F'"
+        },
+        {
+          "name": "GRR.GradedComplete.ev_add",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R) (h : R) (F F' : PowerSeries ℚ), G.ev h (F + F') = G.ev h F + G.ev h F'"
+        },
+        {
+          "name": "GRR.GradedComplete.ev_smul",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R) (h : R) (q : ℚ) (F : PowerSeries ℚ), G.ev h (q • F) = q • G.ev h F"
+        },
+        {
+          "name": "GRR.GradedComplete.ev_one",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R) {h : R}, (G.comp 0) h = 0 → G.ev h 1 = 1"
+        },
+        {
+          "name": "GRR.GradedComplete.ev_X",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R) {h : R}, (G.comp 0) h = 0 → G.ev h PowerSeries.X = h"
+        }
+      ]
+    },
+    {
+      "title": "Commutation of components from commutation of scalings",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.GradedComplete.commute_weight_of_commute_scaling",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R) {c c' : R}, (∀ (i : ℕ), Commute (G.weight (fun n => 2 ^ (i * n)) c) c') → ∀ (w w' : ℕ → ℚ), Commute (G.weight w c) (G.weight w' c')"
+        }
+      ]
+    },
+    {
+      "title": "$\\exp(L(h))=T(h)$ when $T=\\exp L$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.GradedComplete.gexp_ev",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R) {h : R}, (G.comp 0) h = 0 → ∀ {L T : PowerSeries ℚ}, PowerSeries.constantCoeff L = 0 → (∀ (n : ℕ), (PowerSeries.coeff n) T = (PowerSeries.coeff n) (∑ j ∈ Finset.range (n + 1), (↑j.factorial)⁻¹ • L ^ j)) → G.gexp (G.ev h L) = G.ev h T"
+        }
+      ]
+    },
+    {
+      "title": "The Todd operation turns sums into products",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.GradedComplete.toddOf_add",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R) {c c' : R}, Commute (G.weight GRR.GradedComplete.toddWeight c) (G.weight GRR.GradedComplete.toddWeight c') → G.toddOf (c + c') = G.toddOf c * G.toddOf c'"
+        },
+        {
+          "name": "GRR.GradedComplete.toddOf_zero",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R), G.toddOf 0 = 1"
+        },
+        {
+          "name": "GRR.GradedComplete.toddOf_mul_toddOf_neg",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R) (c : R), G.toddOf c * G.toddOf (-c) = 1"
+        },
+        {
+          "name": "GRR.GradedComplete.isUnit_toddOf",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R) (c : R), IsUnit (G.toddOf c)"
+        }
+      ]
+    },
+    {
+      "title": "$\\operatorname{Td}(e^{h})=Q(h)$ in degree one",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.GradedComplete.toddOf_ev_exp",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R) {h : R}, G.IsHom 1 h → G.toddOf (G.ev h (PowerSeries.exp ℚ)) = G.ev h GRR.toddSeries"
+        }
+      ]
+    },
+    {
+      "title": "$Q(h)\\,(1-e^{-h})=h$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.GradedComplete.ev_toddSeries_mul_one_sub_ev_expNeg",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] (G : GRR.GradedComplete R) {h : R}, (G.comp 0) h = 0 → G.ev h GRR.toddSeries * (1 - G.ev h GRR.expNeg) = h"
+        }
+      ]
+    },
+    {
+      "title": "Smooth varieties are smooth, separated, of finite type",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.isSmoothFT_of_isSmoothVariety",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) [AlgebraicGeometry.IsSmoothVariety k sX], GRR.IsSmoothFT k sX"
+        }
+      ]
+    },
+    {
+      "title": "$\\theta_X[\\mathcal E]=[\\mathcal E]$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.vectorBundleEquiv_classOf",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] (E : X.Modules), Stacks.FiniteLocallyFree.IsFiniteLocallyFree E → ∃ (hcoh : Stacks.SheafOfModules.IsCoherent E), (GRR.vectorBundleEquiv k sX) (AlgebraicGeometry.VectorBundleKZero.classOf X E) = KZero.mk (Stacks.SheafOfModules.CoherentModules X.ringCatSheaf) { obj := E, property := hcoh }"
+        }
+      ]
+    },
+    {
+      "title": "Components of Chern characters commute",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.commute_weight_ch",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (w w' : ℕ → ℚ) (a b : AlgebraicGeometry.VectorBundleKZero X), Commute ((GRR.chowGraded C sX).weight w ((GRR.ch C sX) a)) ((GRR.chowGraded C sX).weight w' ((GRR.ch C sX) b))"
+        }
+      ]
+    },
+    {
+      "title": "The Todd class is multiplicative",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.toddClass_add",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (a b : AlgebraicGeometry.VectorBundleKZero X), GRR.toddClass C sX (a + b) = GRR.toddClass C sX a * GRR.toddClass C sX b"
+        },
+        {
+          "name": "GRR.toddClass_zero",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX], GRR.toddClass C sX 0 = 1"
+        },
+        {
+          "name": "GRR.toddClass_classOf_of_shortExact",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (S : CategoryTheory.ShortComplex X.Modules), S.ShortExact → ∀ [h₁ : AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree S.X₁] [h₃ : AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree S.X₃], GRR.toddClass C sX (AlgebraicGeometry.VectorBundleKZero.classOf X S.X₂) = GRR.toddClass C sX (AlgebraicGeometry.VectorBundleKZero.classOf X S.X₁) * GRR.toddClass C sX (AlgebraicGeometry.VectorBundleKZero.classOf X S.X₃)"
+        }
+      ]
+    },
+    {
+      "title": "Todd classes are units and commute with Chern characters",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.toddClass_mul_toddClass_neg",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (a : AlgebraicGeometry.VectorBundleKZero X), GRR.toddClass C sX a * GRR.toddClass C sX (-a) = 1"
+        },
+        {
+          "name": "GRR.isUnit_toddClass",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (a : AlgebraicGeometry.VectorBundleKZero X), IsUnit (GRR.toddClass C sX a)"
+        },
+        {
+          "name": "GRR.commute_toddClass_ch",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (a b : AlgebraicGeometry.VectorBundleKZero X), Commute (GRR.toddClass C sX a) ((GRR.ch C sX) b)"
+        },
+        {
+          "name": "GRR.commute_toddClass_toddClass",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (a b : AlgebraicGeometry.VectorBundleKZero X), Commute (GRR.toddClass C sX a) (GRR.toddClass C sX b)"
+        }
+      ]
+    },
+    {
+      "title": "$\\operatorname{ch}(\\mathcal L)=e^{c_1(\\mathcal L)}$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.isHom_firstChernQ",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (L : X.Modules) [inst_1 : AlgebraicGeometry.SheafOfModules.IsInvertible X.sheaf.obj ⋯ L], (GRR.chowGraded C sX).IsHom 1 (GRR.firstChernQ C sX L)"
+        },
+        {
+          "name": "GRR.ch_classOf_invertible",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (L : X.Modules) [inst_1 : AlgebraicGeometry.SheafOfModules.IsInvertible X.sheaf.obj ⋯ L], (GRR.ch C sX) (AlgebraicGeometry.VectorBundleKZero.classOf X L) = (GRR.chowGraded C sX).ev (GRR.firstChernQ C sX L) (PowerSeries.exp ℚ)"
+        }
+      ]
+    },
+    {
+      "title": "$\\operatorname{td}(\\mathcal L)=\\dfrac{c_1(\\mathcal L)}{1-e^{-c_1(\\mathcal L)}}$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.toddClass_classOf_invertible",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (L : X.Modules) [inst_1 : AlgebraicGeometry.SheafOfModules.IsInvertible X.sheaf.obj ⋯ L], GRR.toddClass C sX (AlgebraicGeometry.VectorBundleKZero.classOf X L) = (GRR.chowGraded C sX).ev (GRR.firstChernQ C sX L) GRR.toddSeries"
+        }
+      ]
+    },
+    {
+      "title": "Graded maps commute with $\\exp$, evaluation and $\\operatorname{Td}$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.GradedComplete.IsGradedHom.map_gexp",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] {G : GRR.GradedComplete R} {R' : Type u_3} [inst_2 : Ring R'] [inst_3 : Module ℚ R'] {G' : GRR.GradedComplete R'} {φ : R →+* R'}, G.IsGradedHom G' φ → ∀ (x : R), φ (G.gexp x) = G'.gexp (φ x)"
+        },
+        {
+          "name": "GRR.GradedComplete.IsGradedHom.map_weight",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] {G : GRR.GradedComplete R} {R' : Type u_3} [inst_2 : Ring R'] [inst_3 : Module ℚ R'] {G' : GRR.GradedComplete R'} {φ : R →+* R'}, G.IsGradedHom G' φ → ∀ (w : ℕ → ℚ) (a : R), φ (G.weight w a) = G'.weight w (φ a)"
+        },
+        {
+          "name": "GRR.GradedComplete.IsGradedHom.map_ev",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] {G : GRR.GradedComplete R} {R' : Type u_3} [inst_2 : Ring R'] [inst_3 : Module ℚ R'] {G' : GRR.GradedComplete R'} {φ : R →+* R'}, G.IsGradedHom G' φ → ∀ (h : R) (F : PowerSeries ℚ), φ (G.ev h F) = G'.ev (φ h) F"
+        },
+        {
+          "name": "GRR.GradedComplete.IsGradedHom.map_toddOf",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {R : Type u_1} [inst : Ring R] [inst_1 : Module ℚ R] {G : GRR.GradedComplete R} {R' : Type u_3} [inst_2 : Ring R'] [inst_3 : Module ℚ R'] {G' : GRR.GradedComplete R'} {φ : R →+* R'}, G.IsGradedHom G' φ → ∀ (c : R), φ (G.toddOf c) = G'.toddOf (φ c)"
+        }
+      ]
+    },
+    {
+      "title": "$f^*\\operatorname{ch}(a)=\\operatorname{ch}(f^*a)$ and $f^*\\operatorname{td}(a)=\\operatorname{td}(f^*a)$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.pullbackAQ_apply",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X Y : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (sY : Y ⟶ C.S) [inst_1 : AlgebraicGeometry.LocallyOfFiniteType sY] (f : X ⟶ Y) [inst_2 : AlgebraicGeometry.LocallyOfFiniteType f] (hf : CategoryTheory.CategoryStruct.comp f sY = sX) (c : Stacks.Chow.RationalTotalChowClass C sY) (p : ℕ), (GRR.pullbackAQ C sX sY f hf) c p = (LinearMap.baseChange ℚ (Stacks.Chow.chowCohomologyRestrictionOfEq C sX sY hf (Stacks.Chow.gysinSystemOfInvertible C) ⋯ ↑p).toIntLinearMap) (c p)"
+        },
+        {
+          "name": "GRR.isGradedHom_pullbackAQ",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X Y : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (sY : Y ⟶ C.S) [inst_1 : AlgebraicGeometry.LocallyOfFiniteType sY] (f : X ⟶ Y) [inst_2 : AlgebraicGeometry.LocallyOfFiniteType f] (hf : CategoryTheory.CategoryStruct.comp f sY = sX), (GRR.chowGraded C sY).IsGradedHom (GRR.chowGraded C sX) (GRR.pullbackAQ C sX sY f hf)"
+        },
+        {
+          "name": "GRR.pullbackAQ_ch",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X Y : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (sY : Y ⟶ C.S) [inst_1 : AlgebraicGeometry.LocallyOfFiniteType sY] (f : X ⟶ Y) [inst_2 : AlgebraicGeometry.LocallyOfFiniteType f] (hf : CategoryTheory.CategoryStruct.comp f sY = sX) (a : AlgebraicGeometry.VectorBundleKZero Y), (GRR.pullbackAQ C sX sY f hf) ((GRR.ch C sY) a) = (GRR.ch C sX) ((AlgebraicGeometry.VectorBundleKZero.pullback f) a)"
+        },
+        {
+          "name": "GRR.pullbackAQ_toddClass",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X Y : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (sY : Y ⟶ C.S) [inst_1 : AlgebraicGeometry.LocallyOfFiniteType sY] (f : X ⟶ Y) [inst_2 : AlgebraicGeometry.LocallyOfFiniteType f] (hf : CategoryTheory.CategoryStruct.comp f sY = sX) (a : AlgebraicGeometry.VectorBundleKZero Y), (GRR.pullbackAQ C sX sY f hf) (GRR.toddClass C sY a) = GRR.toddClass C sX ((AlgebraicGeometry.VectorBundleKZero.pullback f) a)"
+        }
+      ]
+    },
+    {
+      "title": "Projection formula for the cap product",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.rationalProperChowPushforward_totalRationalChowCap_pullbackAQ",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X Y : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (sY : Y ⟶ C.S) [inst_1 : AlgebraicGeometry.LocallyOfFiniteType sY] (f : X ⟶ Y) [inst_2 : AlgebraicGeometry.LocallyOfFiniteType f] (hf : CategoryTheory.CategoryStruct.comp f sY = sX) [inst_3 : AlgebraicGeometry.IsProper f], BddBelow (Set.range (Stacks.Chow.relativeDimension C.dimensionFunction sX)) → BddBelow (Set.range (Stacks.Chow.relativeDimension C.dimensionFunction sY)) → ∀ (c : Stacks.Chow.RationalTotalChowClass C sY) (γ : DirectSum ℤ fun j => TensorProduct ℤ ℚ (Stacks.Chow.chowGroup C sX j)), (Stacks.Chow.rationalProperChowPushforward C sX sY hf) (((Stacks.Chow.totalRationalChowCap C (Stacks.Chow.gysinSystemOfInvertible C) sX) (Stacks.Chow.RationalTotalChowClass.ofFamily.symm ((GRR.pullbackAQ C sX sY f hf) c))) γ) = ((Stacks.Chow.totalRationalChowCap C (Stacks.Chow.gysinSystemOfInvertible C) sY) (Stacks.Chow.RationalTotalChowClass.ofFamily.symm c)) ((Stacks.Chow.rationalProperChowPushforward C sX sY hf) γ)"
+        }
+      ]
+    },
+    {
+      "title": "$f_!$ is well defined",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.pushforwardK_mk",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {X Y : AlgebraicGeometry.Scheme} (f : X ⟶ Y) [inst : AlgebraicGeometry.IsProper f] [inst_1 : AlgebraicGeometry.IsLocallyNoetherian Y] [inst_2 : CompactSpace ↥Y] (F : Stacks.SheafOfModules.CoherentModules X.ringCatSheaf), (GRR.pushforwardK f) (KZero.mk (Stacks.SheafOfModules.CoherentModules X.ringCatSheaf) F) = ∑ i ∈ Finset.range (GRR.cohomologicalBound f), (-1) ^ i • KZero.mk (Stacks.SheafOfModules.CoherentModules Y.ringCatSheaf) (GRR.higherDirectImageCoh f F i)"
+        },
+        {
+          "name": "GRR.pushforwardK_mk_of_isZero",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {X Y : AlgebraicGeometry.Scheme} (f : X ⟶ Y) [inst : AlgebraicGeometry.IsProper f] [inst_1 : AlgebraicGeometry.IsLocallyNoetherian Y] [inst_2 : CompactSpace ↥Y] (F : Stacks.SheafOfModules.CoherentModules X.ringCatSheaf) (N : ℕ), (∀ (i : ℕ), N ≤ i → CategoryTheory.Limits.IsZero (GRR.higherDirectImage f F.obj i)) → (GRR.pushforwardK f) (KZero.mk (Stacks.SheafOfModules.CoherentModules X.ringCatSheaf) F) = ∑ i ∈ Finset.range N, (-1) ^ i • KZero.mk (Stacks.SheafOfModules.CoherentModules Y.ringCatSheaf) (GRR.higherDirectImageCoh f F i)"
+        },
+        {
+          "name": "GRR.sum_range_higherDirectImageCoh_add",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {X Y : AlgebraicGeometry.Scheme} (f : X ⟶ Y) [inst : AlgebraicGeometry.IsProper f] [inst_1 : AlgebraicGeometry.IsLocallyNoetherian Y] [inst_2 : CompactSpace ↥Y] {S : CategoryTheory.ShortComplex (Stacks.SheafOfModules.CoherentModules X.ringCatSheaf)}, S.ShortExact → ∑ i ∈ Finset.range (GRR.cohomologicalBound f), (-1) ^ i • KZero.mk (Stacks.SheafOfModules.CoherentModules Y.ringCatSheaf) (GRR.higherDirectImageCoh f S.X₂ i) = ∑ i ∈ Finset.range (GRR.cohomologicalBound f), (-1) ^ i • KZero.mk (Stacks.SheafOfModules.CoherentModules Y.ringCatSheaf) (GRR.higherDirectImageCoh f S.X₁ i) + ∑ i ∈ Finset.range (GRR.cohomologicalBound f), (-1) ^ i • KZero.mk (Stacks.SheafOfModules.CoherentModules Y.ringCatSheaf) (GRR.higherDirectImageCoh f S.X₃ i)"
+        }
+      ]
+    },
+    {
+      "title": "$i_![\\mathcal F]=[i_*\\mathcal F]$ for a closed immersion",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.pushforwardK_mk_of_isClosedImmersion",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {X Z : AlgebraicGeometry.Scheme} (i : Z ⟶ X) [inst : AlgebraicGeometry.IsClosedImmersion i] [inst_1 : AlgebraicGeometry.IsLocallyNoetherian X] [inst_2 : CompactSpace ↥X] (F : Stacks.SheafOfModules.CoherentModules Z.ringCatSheaf), (GRR.pushforwardK i) (KZero.mk (Stacks.SheafOfModules.CoherentModules Z.ringCatSheaf) F) = KZero.mk (Stacks.SheafOfModules.CoherentModules X.ringCatSheaf) ((AlgebraicGeometry.pushforwardCoherentModules i).obj F)"
+        }
+      ]
+    },
+    {
+      "title": "$(g\\circ i)_!=g_!\\circ i_!$ for a closed immersion $i$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.pushforwardK_comp_of_isClosedImmersion",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {X Y Z : AlgebraicGeometry.Scheme} (i : Z ⟶ X) [inst : AlgebraicGeometry.IsClosedImmersion i] (g : X ⟶ Y) [inst_1 : AlgebraicGeometry.IsProper g] [inst_2 : AlgebraicGeometry.IsLocallyNoetherian X] [inst_3 : CompactSpace ↥X] [inst_4 : AlgebraicGeometry.IsLocallyNoetherian Y] [inst_5 : CompactSpace ↥Y], GRR.pushforwardK (CategoryTheory.CategoryStruct.comp i g) = (GRR.pushforwardK g).comp (GRR.pushforwardK i)"
+        }
+      ]
+    },
+    {
+      "title": "$(p\\circ i)_*=p_*\\circ i_*$ on $CH_*\\otimes\\mathbb Q$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.rationalProperChowPushforward_comp",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P Y : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] [inst_3 : GRR.IsSmoothFT k sY] (i : X ⟶ P) [inst_4 : AlgebraicGeometry.IsProper i] (p : P ⟶ Y) [inst_5 : AlgebraicGeometry.IsProper p] (hi : CategoryTheory.CategoryStruct.comp i sP = sX) (hp : CategoryTheory.CategoryStruct.comp p sY = sP) (hip : CategoryTheory.CategoryStruct.comp (CategoryTheory.CategoryStruct.comp i p) sY = sX) (γ : GRR.CHQ k sX), (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) sX sY hip) γ = (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) sP sY hp) ((Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) sX sP hi) γ)"
+        }
+      ]
+    },
+    {
+      "title": "Riemann–Roch composes",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.riemannRochFor_comp",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P Y : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] [inst_3 : GRR.IsSmoothFT k sY] (i : X ⟶ P) [inst_4 : AlgebraicGeometry.IsClosedImmersion i] (p : P ⟶ Y) [inst_5 : AlgebraicGeometry.IsProper p] (hi : CategoryTheory.CategoryStruct.comp i sP = sX) (hp : CategoryTheory.CategoryStruct.comp p sY = sP) (hip : CategoryTheory.CategoryStruct.comp (CategoryTheory.CategoryStruct.comp i p) sY = sX), GRR.RiemannRochFor k sX sP i hi → GRR.RiemannRochFor k sP sY p hp → GRR.RiemannRochFor k sX sY (CategoryTheory.CategoryStruct.comp i p) hip"
+        }
+      ]
+    },
+    {
+      "title": "$\\mathbb P^n_Y$ is again smooth, separated, of finite type",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.isSmoothFT_projectiveSpaceOver",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [GRR.IsSmoothFT k sY] (n : ℕ), GRR.IsSmoothFT k (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY)"
+        },
+        {
+          "name": "GRR.isProper_projectiveSpaceOver_hom",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {Y : AlgebraicGeometry.Scheme} (n : ℕ), AlgebraicGeometry.IsProper (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y)"
+        }
+      ]
+    },
+    {
+      "title": "Reduction to closed immersions and projections",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.riemannRochFor_of_isProjectiveMorphism",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY], (∀ {X : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) [inst_2 : GRR.IsSmoothFT k sX] (n : ℕ) (i : X ⟶ AlgebraicGeometry.projectiveSpaceOver n Y) [inst_3 : AlgebraicGeometry.IsClosedImmersion i] (hi : CategoryTheory.CategoryStruct.comp i (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) = sX), GRR.RiemannRochFor k sX (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) i hi) → (∀ (n : ℕ), GRR.RiemannRochFor k (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) sY (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) ⋯) → ∀ {X : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) [inst_2 : GRR.IsSmoothFT k sX] (f : X ⟶ Y) [inst_3 : AlgebraicGeometry.IsProper f] (hf : CategoryTheory.CategoryStruct.comp f sY = sX), AlgebraicGeometry.IsProjectiveMorphism f → GRR.RiemannRochFor k sX sY f hf"
+        }
+      ]
+    },
+    {
+      "title": "Riemann–Roch for $\\mathbb P^n_Y\\to Y$ from (P1), (P2), (P3)",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.riemannRochFor_projection_of",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY] (n : ℕ), GRR.ProjectionPushforwardFormula k sY n → GRR.ProjectionGeneration k sY n → GRR.ProjectionTauFormula k sY n → GRR.RiemannRochFor k (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) sY (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) ⋯"
+        }
+      ]
+    },
+    {
+      "title": "The conormal sheaf is finite locally free",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.isFiniteLocallyFree_conormalSheaf",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [GRR.IsSmoothFT k sX] [GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i], CategoryTheory.CategoryStruct.comp i sP = sX → AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree (GRR.conormalSheaf k sP i)"
+        }
+      ]
+    },
+    {
+      "title": "$\\operatorname{ch}_p(\\mathcal E^\\vee)=(-1)^p\\operatorname{ch}_p(\\mathcal E)$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.ch_classOf_dualSheaf",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sY] (E : Y.Modules) [AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree E], (GRR.ch C sY) (AlgebraicGeometry.VectorBundleKZero.classOf Y (Stacks.AlgebraicGeometry.ReflexiveModules.dualSheaf E)) = (GRR.chowGraded C sY).weight (fun n => (-1) ^ n) ((GRR.ch C sY) (AlgebraicGeometry.VectorBundleKZero.classOf Y E))"
+        }
+      ]
+    },
+    {
+      "title": "$\\operatorname{td}(T_X)=i^*\\operatorname{td}(T_P)\\cdot\\operatorname{td}(N_{X/P})^{-1}$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.toddTangent_eq",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i] (hi : CategoryTheory.CategoryStruct.comp i sP = sX), GRR.toddTangent k sX = (GRR.pullbackAQ (Stacks.Chow.fieldChowSituation k) sX sP i hi) (GRR.toddTangent k sP) * GRR.toddClass (Stacks.Chow.fieldChowSituation k) sX (-GRR.normalClass k sP i)"
+        }
+      ]
+    },
+    {
+      "title": "The cap product is an action",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.cap_mul",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : AlgebraicGeometry.LocallyOfFiniteType sY] (c d : GRR.AQ k sY), GRR.cap k sY (c * d) = GRR.cap k sY c * GRR.cap k sY d"
+        }
+      ]
+    },
+    {
+      "title": "Riemann–Roch for a closed immersion from (E)",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.riemannRochFor_of_closedImmersionFormula",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i] (hi : CategoryTheory.CategoryStruct.comp i sP = sX), GRR.ClosedImmersionFormula k sX sP i hi → GRR.RiemannRochFor k sX sP i hi"
+        }
+      ]
+    },
+    {
+      "title": "(E) for every closed immersion of smooth schemes",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.closedImmersionFormula",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i] (hi : CategoryTheory.CategoryStruct.comp i sP = sX), GRR.ClosedImmersionFormula k sX sP i hi"
+        }
+      ]
+    },
+    {
+      "title": "Riemann–Roch for closed immersions",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.riemannRochFor_closedImmersion",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i] (hi : CategoryTheory.CategoryStruct.comp i sP = sX), GRR.RiemannRochFor k sX sP i hi"
+        }
+      ]
+    },
+    {
+      "title": "(P1): the pushforward of the twisted classes",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.projectionPushforwardFormula",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY] (n : ℕ), GRR.ProjectionPushforwardFormula k sY n"
+        }
+      ]
+    },
+    {
+      "title": "(P2): the twisted classes generate rationally",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.projectionGeneration",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY] (n : ℕ), GRR.ProjectionGeneration k sY n"
+        }
+      ]
+    },
+    {
+      "title": "(P3): the Riemann–Roch map on the twisted classes",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.projectionTauFormula",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY] (n : ℕ), GRR.ProjectionTauFormula k sY n"
+        }
+      ]
+    },
+    {
+      "title": "Riemann–Roch for the projections $\\mathbb P^n_Y\\to Y$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.riemannRochFor_projectiveSpaceOver",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY] (n : ℕ), GRR.RiemannRochFor k (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) sY (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) ⋯"
+        }
+      ]
+    },
+    {
+      "title": "The whole reduction in one statement",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.grothendieck_riemann_roch_of",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k], (∀ {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i] (hi : CategoryTheory.CategoryStruct.comp i sP = sX), GRR.ClosedImmersionFormula k sX sP i hi) → (∀ {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY] (n : ℕ), GRR.ProjectionPushforwardFormula k sY n) → (∀ {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY] (n : ℕ), GRR.ProjectionGeneration k sY n) → (∀ {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY] (n : ℕ), GRR.ProjectionTauFormula k sY n) → ∀ {X Y : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sY] (f : X ⟶ Y) [inst_3 : AlgebraicGeometry.IsProper f] (hf : CategoryTheory.CategoryStruct.comp f sY = sX), AlgebraicGeometry.IsProjectiveMorphism f → GRR.RiemannRochFor k sX sY f hf"
+        }
+      ]
+    },
+    {
+      "title": "$\\chi$ is compatible with the pushforward to the point",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.eulerK_mk",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : AlgebraicGeometry.IsProper sX] (F : Stacks.SheafOfModules.CoherentModules X.ringCatSheaf), (GRR.eulerK k sX) (KZero.mk (Stacks.SheafOfModules.CoherentModules X.ringCatSheaf) F) = AlgebraicGeometry.eulerCharacteristic k sX F.obj"
+        },
+        {
+          "name": "GRR.eulerK_pushforwardK",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : AlgebraicGeometry.IsProper sX] (α : AlgebraicGeometry.CoherentKZero X), (GRR.eulerK k (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k))) ((GRR.pushforwardK sX) α) = (GRR.eulerK k sX) α"
+        }
+      ]
+    },
+    {
+      "title": "Riemann–Roch on the point",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.isSmoothFT_id",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k], GRR.IsSmoothFT k (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k))"
+        },
+        {
+          "name": "GRR.tau_point",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] (γ : AlgebraicGeometry.CoherentKZero (AlgebraicGeometry.Spec ↧k)), (GRR.tau k (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k))) γ = ↑((GRR.eulerK k (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k))) γ) • GRR.fundamentalClass k (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k))"
+        }
+      ]
+    },
+    {
+      "title": "Hirzebruch–Riemann–Roch from the formula for $X\\to\\operatorname{Spec}k$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.hirzebruch_riemann_roch_of",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : AlgebraicGeometry.IsProper sX], GRR.RiemannRochFor k sX (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k)) sX ⋯ → ∀ (α : AlgebraicGeometry.CoherentKZero X), (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) sX (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k)) ⋯) ((GRR.tau k sX) α) = ↑((GRR.eulerK k sX) α) • GRR.fundamentalClass k (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k))"
+        }
+      ]
+    },
+    {
+      "title": "Hirzebruch–Riemann–Roch",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.hirzebruch_riemann_roch",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] (hproj : AlgebraicGeometry.IsProjectiveMorphism sX) (α : AlgebraicGeometry.CoherentKZero X), (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) sX (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k)) ⋯) ((GRR.tau k sX) α) = ↑((GRR.eulerK k sX) α) • GRR.fundamentalClass k (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k))"
+        }
+      ]
+    },
+    {
+      "title": "Projection formula for higher direct images",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.higherDirectImageTensorIso",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "{Y X : AlgebraicGeometry.Scheme} → (f : X ⟶ Y) → (G : Y.Modules) → [hG : AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree G] → (n : ℤ) → (GRR.tensorRightMod X ((AlgebraicGeometry.Scheme.Modules.pullback f).obj G)).comp ((AlgebraicGeometry.Scheme.Modules.pushforward f).rightDerivedPlus n) ≅ ((AlgebraicGeometry.Scheme.Modules.pushforward f).rightDerivedPlus n).comp (GRR.tensorRightMod Y G)"
+        }
+      ]
+    },
+    {
+      "title": "Powers of $x$ through the series $e^{-jx}$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.ProjectionGen.exists_X_pow_eq_sum_expNeg_pow",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (n m : ℕ), ∃ c G, PowerSeries.X ^ m = ∑ j ∈ Finset.range (n + 1), c j • GRR.expNeg ^ j + PowerSeries.X ^ (n + 1) * G"
+        }
+      ]
+    },
+    {
+      "title": "$\\operatorname{ch}[\\mathcal O(-j)]=e^{-jh}$ on $\\mathbb P^n_Y$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.ProjectionGen.ch_twistClass_neg",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY] (n j : ℕ), (GRR.ch (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY)) (GRR.twistClass Y n (-↑j)) = (GRR.chowGraded (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY)).ev (GRR.firstChernQ (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) (Stacks.AlgebraicGeometry.ProjTwistTensorPow.twistOver n Y 1)) (GRR.expNeg ^ j)"
+        }
+      ]
+    },
+    {
+      "title": "Projective bundle formula for $\\mathbb P^n_Y$, rationally",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.ProjectionGen.exists_eq_sum_cap_pow_smoothGysinRational",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY] (n : ℕ) (x : GRR.CHQ k (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY)), ∃ y, x = ∑ i, (GRR.cap k (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) (GRR.firstChernQ (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) (Stacks.AlgebraicGeometry.ProjTwistTensorPow.twistOver n Y 1)) ^ ↑i) ((Stacks.Chow.smoothGysinRational (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) sY ⋯) (y i))"
+        }
+      ]
+    },
+    {
+      "title": "$h^{n+1}$ acts as zero on $\\mathbb P^n_Y$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.ProjectionGen.cap_firstChernQ_pow_succ_eq_zero",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY] (n : ℕ), GRR.cap k (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) (GRR.firstChernQ (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) (Stacks.AlgebraicGeometry.ProjTwistTensorPow.twistOver n Y 1)) ^ (n + 1) = 0"
+        }
+      ]
+    },
+    {
+      "title": "$\\operatorname{td}(T_{\\mathbb P^n_Y})=\\pi^*\\operatorname{td}(T_Y)\\cdot Q(h)^{n+1}$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.toddTangent_projectiveSpaceOver",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY] (n : ℕ), GRR.toddTangent k (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) = (GRR.pullbackAQ (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) sY (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) ⋯) (GRR.toddTangent k sY) * (GRR.chowGraded (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY)).ev (GRR.firstChernQ (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) (Stacks.AlgebraicGeometry.ProjTwistTensorPow.twistOver n Y 1)) GRR.toddSeries ^ (n + 1)"
+        }
+      ]
+    },
+    {
+      "title": "Integration over the fibres of $\\mathbb P^n_Y\\to Y$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.pushforward_cap_pullbackAQ_mul_ev",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY] (n : ℕ) (F : PowerSeries ℚ) (c : GRR.AQ k sY), (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) sY ⋯) ((GRR.cap k (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) ((GRR.pullbackAQ (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) sY (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) ⋯) c * (GRR.chowGraded (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY)).ev (GRR.firstChernQ (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY) (Stacks.AlgebraicGeometry.ProjTwistTensorPow.twistOver n Y 1)) F)) (GRR.fundamentalClass k (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n Y ↘ Y) sY))) = (PowerSeries.coeff n) F • (GRR.cap k sY c) (GRR.fundamentalClass k sY)"
+        }
+      ]
+    },
+    {
+      "title": "The Koszul identity for Chern characters",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.ch_koszul",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {X : AlgebraicGeometry.Scheme} (sX : X ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sX] (Q : X.Modules) (r : ℕ) [inst_1 : AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFreeOfRank Q r], ∑ p ∈ Finset.range (r + 1), (-1) ^ p • (GRR.ch C sX) (AlgebraicGeometry.VectorBundleKZero.classOf X ((Stacks.AlgebraicGeometry.ReflexiveModules.dualSheaf Q).exteriorPower ↑p)) = Stacks.Chow.RationalTotalChowClass.ofTotalChowClass ((Stacks.Chow.TotalChowClass.homComponent r) (Stacks.Chow.totalChern C sX Q r)) * GRR.toddClass C sX (-AlgebraicGeometry.VectorBundleKZero.classOf X Q)"
+        }
+      ]
+    },
+    {
+      "title": "Grothendieck–Riemann–Roch from (E) alone",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.grothendieck_riemann_roch_of_closedImmersionFormula",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k], (∀ {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i] (hi : CategoryTheory.CategoryStruct.comp i sP = sX), GRR.ClosedImmersionFormula k sX sP i hi) → ∀ {X Y : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sY] (f : X ⟶ Y) [inst_3 : AlgebraicGeometry.IsProper f] (hf : CategoryTheory.CategoryStruct.comp f sY = sX), AlgebraicGeometry.IsProjectiveMorphism f → GRR.RiemannRochFor k sX sY f hf"
+        }
+      ]
+    },
+    {
+      "title": "Hirzebruch–Riemann–Roch on projective space",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.hirzebruch_riemann_roch_projectiveSpace",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] (n : ℕ) (α : AlgebraicGeometry.CoherentKZero (AlgebraicGeometry.projectiveSpaceOver n (AlgebraicGeometry.Spec ↧k))), (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n (AlgebraicGeometry.Spec ↧k) ↘ AlgebraicGeometry.Spec ↧k) (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k))) (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k)) ⋯) ((GRR.tau k (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n (AlgebraicGeometry.Spec ↧k) ↘ AlgebraicGeometry.Spec ↧k) (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k)))) α) = ↑((GRR.eulerK k (CategoryTheory.CategoryStruct.comp (AlgebraicGeometry.projectiveSpaceOver n (AlgebraicGeometry.Spec ↧k) ↘ AlgebraicGeometry.Spec ↧k) (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k)))) α) • GRR.fundamentalClass k (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k))"
+        }
+      ]
+    },
+    {
+      "title": "Hirzebruch–Riemann–Roch from (E)",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.hirzebruch_riemann_roch_of_closedImmersionFormula",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k], (∀ {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i] (hi : CategoryTheory.CategoryStruct.comp i sP = sX), GRR.ClosedImmersionFormula k sX sP i hi) → ∀ {X : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : AlgebraicGeometry.IsProper sX], AlgebraicGeometry.IsProjectiveMorphism sX → ∀ (α : AlgebraicGeometry.CoherentKZero X), (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) sX (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k)) ⋯) ((GRR.tau k sX) α) = ↑((GRR.eulerK k sX) α) • GRR.fundamentalClass k (CategoryTheory.CategoryStruct.id (AlgebraicGeometry.Spec ↧k))"
+        }
+      ]
+    },
+    {
+      "title": "The tangent sheaf is a vector bundle",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.isFiniteLocallyFree_tangentSheaf",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) [GRR.IsSmoothFT k sX], AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree (GRR.tangentSheaf k sX)"
+        }
+      ]
+    },
+    {
+      "title": "Properties of the Chern character of perfect complexes",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.perfectCh_congr",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sY] {K K' : DerivedCategory Y.Modules} (hK : Stacks.Chow.HasDefinedChernClasses K) (hK' : Stacks.Chow.HasDefinedChernClasses K') (e : K ≅ K'), GRR.perfectCh C sY hK = GRR.perfectCh C sY hK'"
+        },
+        {
+          "name": "GRR.perfectCh_eq_zero",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sY] {K : DerivedCategory Y.Modules} (hK : Stacks.Chow.HasDefinedChernClasses K), CategoryTheory.Limits.IsZero K → GRR.perfectCh C sY hK = 0"
+        },
+        {
+          "name": "GRR.pullbackAQ_perfectCh",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sY] {Y' : AlgebraicGeometry.Scheme} (sY' : Y' ⟶ C.S) [inst_1 : AlgebraicGeometry.LocallyOfFiniteType sY'] (g : Y' ⟶ Y) [inst_2 : AlgebraicGeometry.LocallyOfFiniteType g] (hs : CategoryTheory.CategoryStruct.comp g sY = sY') {K : DerivedCategory Y.Modules} (hK : Stacks.Chow.HasDefinedChernClasses K), (GRR.pullbackAQ C sY' sY g hs) (GRR.perfectCh C sY hK) = GRR.perfectCh C sY' ⋯"
+        },
+        {
+          "name": "GRR.perfectCh_single",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sY] {K : DerivedCategory Y.Modules} (hK : Stacks.Chow.HasDefinedChernClasses K) (M : Y.Modules) [AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree M] (e : K ≅ (DerivedCategory.singleFunctor Y.Modules 0).obj M), GRR.perfectCh C sY hK = (GRR.ch C sY) (AlgebraicGeometry.VectorBundleKZero.classOf Y M)"
+        },
+        {
+          "name": "GRR.perfectCh_derivedTensor",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (C : Stacks.Chow.ChowSituation) {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ C.S) [inst : AlgebraicGeometry.LocallyOfFiniteType sY] {E F : DerivedCategory Y.Modules} (hE : Stacks.Chow.HasDefinedChernClasses E) (hF : Stacks.Chow.HasDefinedChernClasses F) (hEF : Stacks.Chow.HasDefinedChernClasses (((Stacks.DerivedTensor.RingedSite.derivedTensorProductFunctor Y.sheaf).obj E).obj F)), GRR.perfectCh C sY hEF = GRR.perfectCh C sY hE * GRR.perfectCh C sY hF"
+        }
+      ]
+    },
+    {
+      "title": "The Chern character of a coherent sheaf is that of its perfect complex",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.hasDefinedChernClasses_single_coherent",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [GRR.IsSmoothFT k sY] (F : Stacks.SheafOfModules.CoherentModules Y.ringCatSheaf), Stacks.Chow.HasDefinedChernClasses ((DerivedCategory.singleFunctor Y.Modules 0).obj F.obj)"
+        },
+        {
+          "name": "GRR.chK_mk_eq_perfectCh",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY] (F : Stacks.SheafOfModules.CoherentModules Y.ringCatSheaf) {K : DerivedCategory Y.Modules} (hK : Stacks.Chow.HasDefinedChernClasses K) (e : K ≅ (DerivedCategory.singleFunctor Y.Modules 0).obj F.obj), (GRR.chK k sY) (KZero.mk (Stacks.SheafOfModules.CoherentModules Y.ringCatSheaf) F) = GRR.perfectCh (Stacks.Chow.fieldChowSituation k) sY hK"
+        }
+      ]
+    },
+    {
+      "title": "(E) follows from its case of vector bundles",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.chK_pushforwardK_classOf_eq_perfectCh",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i] (E : X.Modules) [AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree E] {K : DerivedCategory P.Modules} (hK : Stacks.Chow.HasDefinedChernClasses K) (e : K ≅ (DerivedCategory.singleFunctor P.Modules 0).obj ((AlgebraicGeometry.Scheme.Modules.pushforward i).obj E)), (GRR.chK k sP) ((GRR.pushforwardK i) ((GRR.vectorBundleEquiv k sX) (AlgebraicGeometry.VectorBundleKZero.classOf X E))) = GRR.perfectCh (Stacks.Chow.fieldChowSituation k) sP hK"
+        },
+        {
+          "name": "GRR.closedImmersionFormula_of_bundles",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i] (hi : CategoryTheory.CategoryStruct.comp i sP = sX), (∀ (E : X.Modules) [AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree E], (GRR.cap k sP ((GRR.chK k sP) ((GRR.pushforwardK i) ((GRR.vectorBundleEquiv k sX) (AlgebraicGeometry.VectorBundleKZero.classOf X E))))) (GRR.fundamentalClass k sP) = (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) sX sP hi) ((GRR.cap k sX ((GRR.ch (Stacks.Chow.fieldChowSituation k) sX) (AlgebraicGeometry.VectorBundleKZero.classOf X E) * GRR.toddClass (Stacks.Chow.fieldChowSituation k) sX (-GRR.normalClass k sP i))) (GRR.fundamentalClass k sX))) → GRR.ClosedImmersionFormula k sX sP i hi"
+        }
+      ]
+    },
+    {
+      "title": "The deformation space is smooth and $i$ is a regular immersion",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.isSmoothFT_blowupAtInfinity",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [GRR.IsSmoothFT k sX] [GRR.IsSmoothFT k sP] (i : X ⟶ P) [AlgebraicGeometry.IsClosedImmersion i], CategoryTheory.CategoryStruct.comp i sP = sX → GRR.IsSmoothFT k (CategoryTheory.CategoryStruct.comp (GRR.DeformationGeom.proj sP i) sP)"
+        },
+        {
+          "name": "GRR.DeformationGeom.isRegularImmersion_of_isSmoothFT",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [GRR.IsSmoothFT k sX] [GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i], CategoryTheory.CategoryStruct.comp i sP = sX → Stacks.AlgebraicGeometry.RegularIdealSheaf.IsRegularImmersion i"
+        }
+      ]
+    },
+    {
+      "title": "Base change of a flat module pushed forward along a closed immersion",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.derivedPullbackSinglePushforwardIsoOfTorIndependent",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "{Z' X' Z X : AlgebraicGeometry.Scheme} → {i' : Z' ⟶ X'} → {g : Z' ⟶ Z} → {f : X' ⟶ X} → {j : Z ⟶ X} → CategoryTheory.IsPullback i' g f j → [AlgebraicGeometry.IsClosedImmersion j] → AlgebraicGeometry.TorIndependent j f → (G : Z.Modules) → AlgebraicGeometry.SheafOfModules.IsFlat G → ((Stacks.Cohomology.DerivedAdjunctionOnRingedSpaces.derivedPullback (AlgebraicGeometry.LocallyRingedSpace.Hom.toShHom (AlgebraicGeometry.Scheme.Hom.toLRSHom f))).obj ((DerivedCategory.singleFunctor X.Modules 0).obj ((AlgebraicGeometry.Scheme.Modules.pushforward j).obj G)) ≅ (DerivedCategory.singleFunctor X'.Modules 0).obj ((AlgebraicGeometry.Scheme.Modules.pushforward i').obj ((AlgebraicGeometry.Scheme.Modules.pullback g).obj G)))"
+        }
+      ]
+    },
+    {
+      "title": "$Q$ restricts to $i_*\\mathcal E$ on the fibre over $0$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.deformationZeroFibreIso",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "{k : Type u_1} → [inst : Field k] → {X P : AlgebraicGeometry.Scheme} → (sP : P ⟶ AlgebraicGeometry.Spec ↧k) → (i : X ⟶ P) → [inst_1 : AlgebraicGeometry.IsClosedImmersion i] → (E : X.Modules) → (Stacks.Cohomology.DerivedAdjunctionOnRingedSpaces.derivedPullback (AlgebraicGeometry.LocallyRingedSpace.Hom.toShHom (AlgebraicGeometry.Scheme.Hom.toLRSHom (GRR.DeformationGeom.sectionAtZero sP i)))).obj (GRR.DeformationGeom.Q i E) ≅ (DerivedCategory.singleFunctor P.Modules 0).obj ((AlgebraicGeometry.Scheme.Modules.pushforward i).obj E)"
+        }
+      ]
+    },
+    {
+      "title": "$Q$ restricts to the zero-section sheaf on the exceptional divisor",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.deformationExceptionalFibreIso",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "{k : Type u_1} → [inst : Field k] → {X P : AlgebraicGeometry.Scheme} → (sP : P ⟶ AlgebraicGeometry.Spec ↧k) → (i : X ⟶ P) → [inst_1 : AlgebraicGeometry.IsClosedImmersion i] → [inst_2 : AlgebraicGeometry.IsLocallyNoetherian X] → (hreg : Stacks.AlgebraicGeometry.RegularIdealSheaf.IsRegularImmersion i) → (r : ℕ) → [AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFreeOfRank (Stacks.Chow.conormalModule i) r] → (E : X.Modules) → [hE : AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree E] → (Stacks.Cohomology.DerivedAdjunctionOnRingedSpaces.derivedPullback (AlgebraicGeometry.LocallyRingedSpace.Hom.toShHom (AlgebraicGeometry.Scheme.Hom.toLRSHom (GRR.DeformationGeom.exceptionalInclusion sP i)))).obj (GRR.DeformationGeom.Q i E) ≅ (Stacks.Cohomology.DerivedAdjunctionOnRingedSpaces.derivedPullback (AlgebraicGeometry.LocallyRingedSpace.Hom.toShHom (AlgebraicGeometry.Scheme.Hom.toLRSHom (Stacks.Chow.exceptionalFibreIsoProjectiveCompletion sP i hreg).hom))).obj ((DerivedCategory.singleFunctor (Stacks.ProjectiveCompletion.projectiveCompletion (Stacks.AlgebraicGeometry.ReflexiveModules.dualSheaf (Stacks.Chow.VirtualNormalBundle.ofIsRegularImmersion i hreg).bundle)).Modules 0).obj ((AlgebraicGeometry.Scheme.Modules.pushforward (Stacks.ProjectiveCompletion.zeroSection (Stacks.AlgebraicGeometry.ReflexiveModules.dualSheaf (Stacks.Chow.VirtualNormalBundle.ofIsRegularImmersion i hreg).bundle))).obj ((AlgebraicGeometry.Scheme.Modules.pullback (Stacks.Chow.bundleProj (Stacks.Ample.unitModule X))).obj E)))"
+        }
+      ]
+    },
+    {
+      "title": "$Q$ vanishes on the strict transform",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.isZero_deformationStrictTransform",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {k : Type u_1} [inst : Field k] {X P : AlgebraicGeometry.Scheme} (sP : P ⟶ AlgebraicGeometry.Spec ↧k) (i : X ⟶ P) [inst_1 : AlgebraicGeometry.IsClosedImmersion i] (E : X.Modules), CategoryTheory.Limits.IsZero ((Stacks.Cohomology.DerivedAdjunctionOnRingedSpaces.derivedPullback (AlgebraicGeometry.LocallyRingedSpace.Hom.toShHom (AlgebraicGeometry.Scheme.Hom.toLRSHom (GRR.DeformationGeom.strictTransformInclusion sP i)))).obj (GRR.DeformationGeom.Q i E))"
+        }
+      ]
+    },
+    {
+      "title": "Specialization of $[P]$ in the deformation space",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.exists_specialization_fundamentalClass",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P : AlgebraicGeometry.Scheme} (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_2 : AlgebraicGeometry.IsClosedImmersion i] {n : ℕ}, AlgebraicGeometry.RelativeDimension sP n → ∃ β, (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) sP (CategoryTheory.CategoryStruct.comp (Stacks.Chow.modificationProjection sP (Stacks.Chow.blowupAtInfinityToProjectiveLineProduct (AlgebraicGeometry.Scheme.Hom.ker i) sP)) sP) ⋯) (GRR.fundamentalClass k sP) = (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (CategoryTheory.CategoryStruct.comp (CategoryTheory.Limits.pullback.fst (Stacks.Chow.modificationProjectionAtInfinity sP (Stacks.Chow.blowupAtInfinityToProjectiveLineProduct (AlgebraicGeometry.Scheme.Hom.ker i) sP)) i) (Stacks.Chow.modificationInclusionAtInfinity sP (Stacks.Chow.blowupAtInfinityToProjectiveLineProduct (AlgebraicGeometry.Scheme.Hom.ker i) sP))) (CategoryTheory.CategoryStruct.comp (Stacks.Chow.modificationProjection sP (Stacks.Chow.blowupAtInfinityToProjectiveLineProduct (AlgebraicGeometry.Scheme.Hom.ker i) sP)) sP)) (CategoryTheory.CategoryStruct.comp (Stacks.Chow.modificationProjection sP (Stacks.Chow.blowupAtInfinityToProjectiveLineProduct (AlgebraicGeometry.Scheme.Hom.ker i) sP)) sP) ⋯) (Stacks.Chow.rationalFundamentalClass (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (CategoryTheory.CategoryStruct.comp (CategoryTheory.Limits.pullback.fst (Stacks.Chow.modificationProjectionAtInfinity sP (Stacks.Chow.blowupAtInfinityToProjectiveLineProduct (AlgebraicGeometry.Scheme.Hom.ker i) sP)) i) (Stacks.Chow.modificationInclusionAtInfinity sP (Stacks.Chow.blowupAtInfinityToProjectiveLineProduct (AlgebraicGeometry.Scheme.Hom.ker i) sP))) (CategoryTheory.CategoryStruct.comp (Stacks.Chow.modificationProjection sP (Stacks.Chow.blowupAtInfinityToProjectiveLineProduct (AlgebraicGeometry.Scheme.Hom.ker i) sP)) sP))) + (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (CategoryTheory.CategoryStruct.comp (Stacks.Chow.strictTransformToFibreAtInfinity sP i) (Stacks.Chow.modificationInclusionAtInfinity sP (Stacks.Chow.blowupAtInfinityToProjectiveLineProduct (AlgebraicGeometry.Scheme.Hom.ker i) sP))) (CategoryTheory.CategoryStruct.comp (Stacks.Chow.modificationProjection sP (Stacks.Chow.blowupAtInfinityToProjectiveLineProduct (AlgebraicGeometry.Scheme.Hom.ker i) sP)) sP)) (CategoryTheory.CategoryStruct.comp (Stacks.Chow.modificationProjection sP (Stacks.Chow.blowupAtInfinityToProjectiveLineProduct (AlgebraicGeometry.Scheme.Hom.ker i) sP)) sP) ⋯) β"
+        }
+      ]
+    },
+    {
+      "title": "The projective completion is smooth",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.isSmoothFT_projectiveCompletion",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {X : AlgebraicGeometry.Scheme} (𝒞 : X.Modules) [inst : AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree 𝒞] (r : ℕ) [AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFreeOfRank 𝒞 r] (k : Type u_1) [inst_2 : Field k] (sX : X ⟶ AlgebraicGeometry.Spec ↧k) [GRR.IsSmoothFT k sX], GRR.IsSmoothFT k (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞) sX)"
+        },
+        {
+          "name": "GRR.ZeroSectionRR.isIso_bundleProj_unitModule",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {X : AlgebraicGeometry.Scheme} (𝒞 : X.Modules) [AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree 𝒞] (r : ℕ) [AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFreeOfRank 𝒞 r] [AlgebraicGeometry.IsLocallyNoetherian X], CategoryTheory.IsIso (Stacks.Chow.bundleProj (Stacks.Ample.unitModule X))"
+        }
+      ]
+    },
+    {
+      "title": "The Chern character of a sheaf on the zero section",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.perfectCh_pushforward_zeroSection",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {X : AlgebraicGeometry.Scheme} (𝒞 : X.Modules) [inst : AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree 𝒞] (r : ℕ) [AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFreeOfRank 𝒞 r] (E : X.Modules) [AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree E] (C : Stacks.Chow.ChowSituation) (sX : X ⟶ C.S) [inst_3 : AlgebraicGeometry.LocallyOfFiniteType sX] {K : DerivedCategory (Stacks.ProjectiveCompletion.projectiveCompletion 𝒞).Modules} (hK : Stacks.Chow.HasDefinedChernClasses K) (e : K ≅ (DerivedCategory.singleFunctor (Stacks.ProjectiveCompletion.projectiveCompletion 𝒞).Modules 0).obj ((AlgebraicGeometry.Scheme.Modules.pushforward (Stacks.ProjectiveCompletion.zeroSection 𝒞)).obj ((AlgebraicGeometry.Scheme.Modules.pullback (Stacks.Chow.bundleProj (Stacks.Ample.unitModule X))).obj E))), GRR.perfectCh C (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞) sX) hK = (GRR.ch C (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞) sX)) (GRR.lambdaNegOne (Stacks.ProjectiveCompletion.koszulModule 𝒞) r) * (GRR.ch C (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞) sX)) (AlgebraicGeometry.VectorBundleKZero.classOf (Stacks.ProjectiveCompletion.projectiveCompletion 𝒞) ((AlgebraicGeometry.Scheme.Modules.pullback (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞)).obj E))"
+        },
+        {
+          "name": "GRR.perfectCh_pushforward_zeroSection_unit",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {X : AlgebraicGeometry.Scheme} (𝒞 : X.Modules) [inst : AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree 𝒞] (r : ℕ) [AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFreeOfRank 𝒞 r] (C : Stacks.Chow.ChowSituation) (sX : X ⟶ C.S) [inst_2 : AlgebraicGeometry.LocallyOfFiniteType sX] (hK : Stacks.Chow.HasDefinedChernClasses ((DerivedCategory.singleFunctor (Stacks.ProjectiveCompletion.projectiveCompletion 𝒞).Modules 0).obj ((AlgebraicGeometry.Scheme.Modules.pushforward (Stacks.ProjectiveCompletion.zeroSection 𝒞)).obj (SheafOfModules.unit (Stacks.Chow.bundle (Stacks.Ample.unitModule X)).ringCatSheaf)))), GRR.perfectCh C (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞) sX) hK = (GRR.ch C (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞) sX)) (GRR.lambdaNegOne (Stacks.ProjectiveCompletion.koszulModule 𝒞) r)"
+        }
+      ]
+    },
+    {
+      "title": "The top Chern class of the Koszul module is the zero section",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.cap_topClass_fundamentalClass",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {X : AlgebraicGeometry.Scheme} (𝒞 : X.Modules) [inst : AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree 𝒞] (r : ℕ) [inst_1 : AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFreeOfRank 𝒞 r] (k : Type u_1) [inst_2 : Field k] (sX : X ⟶ AlgebraicGeometry.Spec ↧k) [inst_3 : GRR.IsSmoothFT k sX], (GRR.cap k (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞) sX) ((GRR.ch (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞) sX)) (GRR.lambdaNegOne (Stacks.ProjectiveCompletion.koszulModule 𝒞) r) * GRR.toddClass (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞) sX) (AlgebraicGeometry.VectorBundleKZero.classOf (Stacks.ProjectiveCompletion.projectiveCompletion 𝒞) (Stacks.AlgebraicGeometry.ReflexiveModules.dualSheaf (Stacks.ProjectiveCompletion.koszulModule 𝒞))))) (GRR.fundamentalClass k (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞) sX)) = (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (Stacks.Chow.bundleProj (Stacks.Ample.unitModule X)) sX) (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞) sX) ⋯) (GRR.fundamentalClass k (CategoryTheory.CategoryStruct.comp (Stacks.Chow.bundleProj (Stacks.Ample.unitModule X)) sX))"
+        }
+      ]
+    },
+    {
+      "title": "The Koszul module restricted to the zero section",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.pullback_zeroSection_classOf_dual_koszulModule",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {X : AlgebraicGeometry.Scheme} (𝒞 : X.Modules) [inst : AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree 𝒞] (r : ℕ) [AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFreeOfRank 𝒞 r], (AlgebraicGeometry.VectorBundleKZero.pullback (Stacks.ProjectiveCompletion.zeroSection 𝒞)) (AlgebraicGeometry.VectorBundleKZero.classOf (Stacks.ProjectiveCompletion.projectiveCompletion 𝒞) (Stacks.AlgebraicGeometry.ReflexiveModules.dualSheaf (Stacks.ProjectiveCompletion.koszulModule 𝒞))) = (AlgebraicGeometry.VectorBundleKZero.pullback (Stacks.Chow.bundleProj (Stacks.Ample.unitModule X))) (AlgebraicGeometry.VectorBundleKZero.classOf X (Stacks.AlgebraicGeometry.ReflexiveModules.dualSheaf 𝒞))"
+        }
+      ]
+    },
+    {
+      "title": "Riemann–Roch for the zero section of $\\mathbb P(\\mathcal C\\oplus\\mathcal O)$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.zeroSection_formula",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ {X : AlgebraicGeometry.Scheme} (𝒞 : X.Modules) [inst : AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree 𝒞] (r : ℕ) [inst_1 : AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFreeOfRank 𝒞 r] (k : Type u_1) [inst_2 : Field k] (sX : X ⟶ AlgebraicGeometry.Spec ↧k) [inst_3 : GRR.IsSmoothFT k sX] (E : X.Modules) [AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree E] {K : DerivedCategory (Stacks.ProjectiveCompletion.projectiveCompletion 𝒞).Modules} (hK : Stacks.Chow.HasDefinedChernClasses K) (e : K ≅ (DerivedCategory.singleFunctor (Stacks.ProjectiveCompletion.projectiveCompletion 𝒞).Modules 0).obj ((AlgebraicGeometry.Scheme.Modules.pushforward (Stacks.ProjectiveCompletion.zeroSection 𝒞)).obj ((AlgebraicGeometry.Scheme.Modules.pullback (Stacks.Chow.bundleProj (Stacks.Ample.unitModule X))).obj E))), (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞) sX) sX ⋯) ((GRR.cap k (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞) sX) (GRR.perfectCh (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞) sX) hK)) (GRR.fundamentalClass k (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj 𝒞) sX))) = (GRR.cap k sX ((GRR.ch (Stacks.Chow.fieldChowSituation k) sX) (AlgebraicGeometry.VectorBundleKZero.classOf X E) * GRR.toddClass (Stacks.Chow.fieldChowSituation k) sX (-AlgebraicGeometry.VectorBundleKZero.classOf X (Stacks.AlgebraicGeometry.ReflexiveModules.dualSheaf 𝒞)))) (GRR.fundamentalClass k sX)"
+        }
+      ]
+    },
+    {
+      "title": "The normal class is the class of the normal bundle of Stacks",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.conormalSheafIsoConormalModule",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "(k : Type u_1) → [inst : Field k] → {X P : AlgebraicGeometry.Scheme} → (sP : P ⟶ AlgebraicGeometry.Spec ↧k) → (i : X ⟶ P) → [inst_1 : AlgebraicGeometry.IsClosedImmersion i] → GRR.conormalSheaf k sP i ≅ Stacks.Chow.conormalModule i"
+        },
+        {
+          "name": "GRR.normalClass_eq_classOf_dualSheaf_bundle",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [GRR.IsSmoothFT k sX] [GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i], CategoryTheory.CategoryStruct.comp i sP = sX → ∀ [inst_4 : AlgebraicGeometry.IsLocallyNoetherian X] (hreg : Stacks.AlgebraicGeometry.RegularIdealSheaf.IsRegularImmersion i), GRR.normalClass k sP i = AlgebraicGeometry.VectorBundleKZero.classOf X (Stacks.AlgebraicGeometry.ReflexiveModules.dualSheaf (Stacks.AlgebraicGeometry.ReflexiveModules.dualSheaf (Stacks.Chow.VirtualNormalBundle.ofIsRegularImmersion i hreg).bundle))"
+        }
+      ]
+    },
+    {
+      "title": "Deformation to the normal cone: from the zero section to $i$",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.closedImmersionFormula_core_of",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i] (hi : CategoryTheory.CategoryStruct.comp i sP = sX) {n : ℕ}, AlgebraicGeometry.RelativeDimension sP n → ∀ (r : ℕ) [inst_4 : AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFreeOfRank (Stacks.Chow.conormalModule i) r], (∀ (E : X.Modules) [AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree E] {K : DerivedCategory (Stacks.ProjectiveCompletion.projectiveCompletion (GRR.ClosedFormulaCore.conormalBundle k sX sP i hi)).Modules} (hK : Stacks.Chow.HasDefinedChernClasses K) (x : K ≅ (DerivedCategory.singleFunctor (Stacks.ProjectiveCompletion.projectiveCompletion (GRR.ClosedFormulaCore.conormalBundle k sX sP i hi)).Modules 0).obj ((AlgebraicGeometry.Scheme.Modules.pushforward (Stacks.ProjectiveCompletion.zeroSection (GRR.ClosedFormulaCore.conormalBundle k sX sP i hi))).obj ((AlgebraicGeometry.Scheme.Modules.pullback (Stacks.Chow.bundleProj (Stacks.Ample.unitModule X))).obj E))), (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj (GRR.ClosedFormulaCore.conormalBundle k sX sP i hi)) sX) sX ⋯) ((GRR.cap k (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj (GRR.ClosedFormulaCore.conormalBundle k sX sP i hi)) sX) (GRR.perfectCh (Stacks.Chow.fieldChowSituation k) (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj (GRR.ClosedFormulaCore.conormalBundle k sX sP i hi)) sX) hK)) (GRR.fundamentalClass k (CategoryTheory.CategoryStruct.comp (Stacks.ProjectiveCompletion.projectiveCompletionProj (GRR.ClosedFormulaCore.conormalBundle k sX sP i hi)) sX))) = (GRR.cap k sX ((GRR.ch (Stacks.Chow.fieldChowSituation k) sX) (AlgebraicGeometry.VectorBundleKZero.classOf X E) * GRR.toddClass (Stacks.Chow.fieldChowSituation k) sX (-AlgebraicGeometry.VectorBundleKZero.classOf X (Stacks.AlgebraicGeometry.ReflexiveModules.dualSheaf (GRR.ClosedFormulaCore.conormalBundle k sX sP i hi))))) (GRR.fundamentalClass k sX)) → GRR.normalClass k sP i = AlgebraicGeometry.VectorBundleKZero.classOf X (Stacks.AlgebraicGeometry.ReflexiveModules.dualSheaf (GRR.ClosedFormulaCore.conormalBundle k sX sP i hi)) → ∀ (E : X.Modules) [hE : AlgebraicGeometry.SheafOfModules.IsFiniteLocallyFree E], (GRR.cap k sP ((GRR.chK k sP) ((GRR.pushforwardK i) ((GRR.vectorBundleEquiv k sX) (AlgebraicGeometry.VectorBundleKZero.classOf X E))))) (GRR.fundamentalClass k sP) = (Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) sX sP hi) ((GRR.cap k sX ((GRR.ch (Stacks.Chow.fieldChowSituation k) sX) (AlgebraicGeometry.VectorBundleKZero.classOf X E) * GRR.toddClass (Stacks.Chow.fieldChowSituation k) sX (-GRR.normalClass k sP i))) (GRR.fundamentalClass k sX))"
+        }
+      ]
+    },
+    {
+      "title": "The core case of (E) holds",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.closedImmersionFormula_core",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k], GRR.CoreClosedImmersionFormula k"
+        }
+      ]
+    },
+    {
+      "title": "(E) under composition and cancellation",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.closedImmersionFormula_comp",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P Q : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) (sQ : Q ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] [inst_3 : GRR.IsSmoothFT k sQ] (i : X ⟶ P) [inst_4 : AlgebraicGeometry.IsClosedImmersion i] (j : P ⟶ Q) [inst_5 : AlgebraicGeometry.IsClosedImmersion j] (hi : CategoryTheory.CategoryStruct.comp i sP = sX) (hj : CategoryTheory.CategoryStruct.comp j sQ = sP) (hij : CategoryTheory.CategoryStruct.comp (CategoryTheory.CategoryStruct.comp i j) sQ = sX), GRR.ClosedImmersionFormula k sX sP i hi → GRR.ClosedImmersionFormula k sP sQ j hj → GRR.ClosedImmersionFormula k sX sQ (CategoryTheory.CategoryStruct.comp i j) hij"
+        },
+        {
+          "name": "GRR.closedImmersionFormula_of_comp",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P Q : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) (sQ : Q ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] [inst_3 : GRR.IsSmoothFT k sQ] (i : X ⟶ P) [inst_4 : AlgebraicGeometry.IsClosedImmersion i] (j : P ⟶ Q) [inst_5 : AlgebraicGeometry.IsClosedImmersion j] (hi : CategoryTheory.CategoryStruct.comp i sP = sX) (hj : CategoryTheory.CategoryStruct.comp j sQ = sP) (hij : CategoryTheory.CategoryStruct.comp (CategoryTheory.CategoryStruct.comp i j) sQ = sX), GRR.ClosedImmersionFormula k sX sQ (CategoryTheory.CategoryStruct.comp i j) hij → GRR.ClosedImmersionFormula k sP sQ j hj → Function.Injective ⇑(Stacks.Chow.rationalProperChowPushforward (Stacks.Chow.fieldChowSituation k) sP sQ hj) → GRR.ClosedImmersionFormula k sX sP i hi"
+        }
+      ]
+    },
+    {
+      "title": "(E) for the inclusion of an open and closed subscheme",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.closedImmersionFormula_ι",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {Y : AlgebraicGeometry.Scheme} (sY : Y ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sY] (V : Y.Opens) [inst_2 : AlgebraicGeometry.IsClosedImmersion V.ι], GRR.ClosedImmersionFormula k (CategoryTheory.CategoryStruct.comp V.ι sY) sY V.ι ⋯"
+        }
+      ]
+    },
+    {
+      "title": "(E) can be checked on open and closed pieces",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.closedImmersionFormula_of_isClopenDecomposition",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i] (hi : CategoryTheory.CategoryStruct.comp i sP = sX) (U : ℕ → X.Opens) (hU : Stacks.Chow.IsClopenDecomposition U), (∀ (n : ℕ), GRR.ClosedImmersionFormula k (CategoryTheory.CategoryStruct.comp (U n).ι sX) sP (CategoryTheory.CategoryStruct.comp (U n).ι i) ⋯) → GRR.ClosedImmersionFormula k sX sP i hi"
+        },
+        {
+          "name": "GRR.closedImmersionFormula_of_restrict",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k] {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i] (hi : CategoryTheory.CategoryStruct.comp i sP = sX) (W : P.Opens) [inst_4 : AlgebraicGeometry.IsClosedImmersion W.ι] [inst_5 : AlgebraicGeometry.IsClosedImmersion ((TopologicalSpace.Opens.map i.base).obj W).ι], GRR.ClosedImmersionFormula k (CategoryTheory.CategoryStruct.comp ((TopologicalSpace.Opens.map i.base).obj W).ι sX) (CategoryTheory.CategoryStruct.comp W.ι sP) (i ∣_ W) ⋯ → GRR.ClosedImmersionFormula k (CategoryTheory.CategoryStruct.comp ((TopologicalSpace.Opens.map i.base).obj W).ι sX) sP (CategoryTheory.CategoryStruct.comp ((TopologicalSpace.Opens.map i.base).obj W).ι i) ⋯"
+        }
+      ]
+    },
+    {
+      "title": "(E) in codimension zero, from the core case",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.closedImmersionFormula_of_codim_zero",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k], GRR.CoreClosedImmersionFormula k → ∀ {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i] (hi : CategoryTheory.CategoryStruct.comp i sP = sX) (n : ℕ) [AlgebraicGeometry.SmoothOfRelativeDimension n sP] [AlgebraicGeometry.SmoothOfRelativeDimension n sX] [Nonempty ↥X], GRR.ClosedImmersionFormula k sX sP i hi"
+        }
+      ]
+    },
+    {
+      "title": "(E) for all closed immersions, from the core case",
+      "assumes": [],
+      "declarations": [
+        {
+          "name": "GRR.closedImmersionFormula_of_core",
+          "ok": true,
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "signature": "∀ (k : Type u_1) [inst : Field k], GRR.CoreClosedImmersionFormula k → ∀ {X P : AlgebraicGeometry.Scheme} (sX : X ⟶ AlgebraicGeometry.Spec ↧k) (sP : P ⟶ AlgebraicGeometry.Spec ↧k) [inst_1 : GRR.IsSmoothFT k sX] [inst_2 : GRR.IsSmoothFT k sP] (i : X ⟶ P) [inst_3 : AlgebraicGeometry.IsClosedImmersion i] (hi : CategoryTheory.CategoryStruct.comp i sP = sX), GRR.ClosedImmersionFormula k sX sP i hi"
+        }
+      ]
+    }
+  ],
+  "fromMathlib": [
+    "$K_0(\\mathrm{Vect}\\,X)\\otimes\\mathbb Q\\cong CH_*(X)\\otimes\\mathbb Q$ on regular schemes",
+    "The Gysin map of a flat morphism is flat pullback",
+    "The Euler sequence on projective space over a ring",
+    "Flat pullback of the fundamental class of a smooth scheme",
+    "Projective morphisms are proper",
+    "Higher direct images of the twists on $\\mathbb P^n_Y$",
+    "The projective bundle formula along a projective tower",
+    "Pushing forward powers of the hyperplane class",
+    "The Gysin map commutes with the Chern character",
+    "Power sum classes of perfect complexes",
+    "The blowup at infinity of a closed immersion",
+    "Derived base change for Tor independent squares",
+    "Specialization at infinity and the localization sequence",
+    "The zero section of a projective completion: Koszul resolution and top Chern class",
+    "Blowups and closed immersions of smooth schemes",
+    "Capping with the fundamental class is bijective on a smooth scheme"
+  ],
+  "notFormal": []
+}

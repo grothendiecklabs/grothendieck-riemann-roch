@@ -1,0 +1,9 @@
+Grothendieck–Riemann–Roch
+Copyright 2026 Grothendieck Labs
+
+This project builds on Stacks (https://github.com/AxiomMath/Stacks), licensed
+under the Apache License 2.0. Two lemmas are restated from Stacks modules:
+Stacks 0FF4 in GRR/ProjectionGen.lean, from
+WeilCohomology/Concrete/ProjectiveBundleRationalChow, and flat pullback of the
+fundamental class in GRR/ProjectionTau.lean, from
+WeilCohomology/Concrete/ProjectiveBundleDiagonal.

@@ -1,0 +1,625 @@
+{
+  "goal": {
+    "title": "Grothendieck–Riemann–Roch",
+    "decl": "GRR.grothendieck_riemann_roch"
+  },
+  "cards": [
+    {
+      "title": "Grothendieck–Riemann–Roch",
+      "decls": [
+        "GRR.grothendieck_riemann_roch"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$Q(x)\\,(1-e^{-x}) = x$",
+      "decls": [
+        "GRR.toddSeries_mul_one_sub_expNeg"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The coefficient of $x^n$ in $e^{dx}Q^{n+1}$ is $\\binom{n+d}{n}$",
+      "decls": [
+        "GRR.coeff_exp_pow_mul_toddSeries_pow"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The coefficient of $x^n$ in $e^{-jx}Q^{n+1}$ vanishes for $1\\le j\\le n$",
+      "decls": [
+        "GRR.coeff_expNeg_pow_mul_toddSeries_pow"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$Q=\\exp(\\log Q)$, coefficient by coefficient",
+      "decls": [
+        "GRR.coeff_toddSeries_eq_coeff_sum_logTodd_pow"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$\\exp(x+y)=\\exp(x)\\exp(y)$ for commuting $x,y$",
+      "decls": [
+        "GRR.GradedComplete.gexp_add",
+        "GRR.GradedComplete.gexp_zero",
+        "GRR.GradedComplete.isUnit_gexp"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$F\\mapsto F(h)$ is a ring map",
+      "decls": [
+        "GRR.GradedComplete.ev_mul",
+        "GRR.GradedComplete.ev_add",
+        "GRR.GradedComplete.ev_smul",
+        "GRR.GradedComplete.ev_one",
+        "GRR.GradedComplete.ev_X"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Commutation of components from commutation of scalings",
+      "decls": [
+        "GRR.GradedComplete.commute_weight_of_commute_scaling"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$\\exp(L(h))=T(h)$ when $T=\\exp L$",
+      "decls": [
+        "GRR.GradedComplete.gexp_ev"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The Todd operation turns sums into products",
+      "decls": [
+        "GRR.GradedComplete.toddOf_add",
+        "GRR.GradedComplete.toddOf_zero",
+        "GRR.GradedComplete.toddOf_mul_toddOf_neg",
+        "GRR.GradedComplete.isUnit_toddOf"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$\\operatorname{Td}(e^{h})=Q(h)$ in degree one",
+      "decls": [
+        "GRR.GradedComplete.toddOf_ev_exp"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$Q(h)\\,(1-e^{-h})=h$",
+      "decls": [
+        "GRR.GradedComplete.ev_toddSeries_mul_one_sub_ev_expNeg"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Smooth varieties are smooth, separated, of finite type",
+      "decls": [
+        "GRR.isSmoothFT_of_isSmoothVariety"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$\\theta_X[\\mathcal E]=[\\mathcal E]$",
+      "decls": [
+        "GRR.vectorBundleEquiv_classOf"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Components of Chern characters commute",
+      "decls": [
+        "GRR.commute_weight_ch"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The Todd class is multiplicative",
+      "decls": [
+        "GRR.toddClass_add",
+        "GRR.toddClass_zero",
+        "GRR.toddClass_classOf_of_shortExact"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Todd classes are units and commute with Chern characters",
+      "decls": [
+        "GRR.toddClass_mul_toddClass_neg",
+        "GRR.isUnit_toddClass",
+        "GRR.commute_toddClass_ch",
+        "GRR.commute_toddClass_toddClass"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$\\operatorname{ch}(\\mathcal L)=e^{c_1(\\mathcal L)}$",
+      "decls": [
+        "GRR.isHom_firstChernQ",
+        "GRR.ch_classOf_invertible"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$\\operatorname{td}(\\mathcal L)=\\dfrac{c_1(\\mathcal L)}{1-e^{-c_1(\\mathcal L)}}$",
+      "decls": [
+        "GRR.toddClass_classOf_invertible"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Graded maps commute with $\\exp$, evaluation and $\\operatorname{Td}$",
+      "decls": [
+        "GRR.GradedComplete.IsGradedHom.map_gexp",
+        "GRR.GradedComplete.IsGradedHom.map_weight",
+        "GRR.GradedComplete.IsGradedHom.map_ev",
+        "GRR.GradedComplete.IsGradedHom.map_toddOf"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$f^*\\operatorname{ch}(a)=\\operatorname{ch}(f^*a)$ and $f^*\\operatorname{td}(a)=\\operatorname{td}(f^*a)$",
+      "decls": [
+        "GRR.pullbackAQ_apply",
+        "GRR.isGradedHom_pullbackAQ",
+        "GRR.pullbackAQ_ch",
+        "GRR.pullbackAQ_toddClass"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Projection formula for the cap product",
+      "decls": [
+        "GRR.rationalProperChowPushforward_totalRationalChowCap_pullbackAQ"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$f_!$ is well defined",
+      "decls": [
+        "GRR.pushforwardK_mk",
+        "GRR.pushforwardK_mk_of_isZero",
+        "GRR.sum_range_higherDirectImageCoh_add"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$i_![\\mathcal F]=[i_*\\mathcal F]$ for a closed immersion",
+      "decls": [
+        "GRR.pushforwardK_mk_of_isClosedImmersion"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$(g\\circ i)_!=g_!\\circ i_!$ for a closed immersion $i$",
+      "decls": [
+        "GRR.pushforwardK_comp_of_isClosedImmersion"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$(p\\circ i)_*=p_*\\circ i_*$ on $CH_*\\otimes\\mathbb Q$",
+      "decls": [
+        "GRR.rationalProperChowPushforward_comp"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Riemann–Roch composes",
+      "decls": [
+        "GRR.riemannRochFor_comp"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$\\mathbb P^n_Y$ is again smooth, separated, of finite type",
+      "decls": [
+        "GRR.isSmoothFT_projectiveSpaceOver",
+        "GRR.isProper_projectiveSpaceOver_hom"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Reduction to closed immersions and projections",
+      "decls": [
+        "GRR.riemannRochFor_of_isProjectiveMorphism"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Riemann–Roch for $\\mathbb P^n_Y\\to Y$ from (P1), (P2), (P3)",
+      "decls": [
+        "GRR.riemannRochFor_projection_of"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The conormal sheaf is finite locally free",
+      "decls": [
+        "GRR.isFiniteLocallyFree_conormalSheaf"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$\\operatorname{ch}_p(\\mathcal E^\\vee)=(-1)^p\\operatorname{ch}_p(\\mathcal E)$",
+      "decls": [
+        "GRR.ch_classOf_dualSheaf"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$\\operatorname{td}(T_X)=i^*\\operatorname{td}(T_P)\\cdot\\operatorname{td}(N_{X/P})^{-1}$",
+      "decls": [
+        "GRR.toddTangent_eq"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The cap product is an action",
+      "decls": [
+        "GRR.cap_mul"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Riemann–Roch for a closed immersion from (E)",
+      "decls": [
+        "GRR.riemannRochFor_of_closedImmersionFormula"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "(E) for every closed immersion of smooth schemes",
+      "decls": [
+        "GRR.closedImmersionFormula"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Riemann–Roch for closed immersions",
+      "decls": [
+        "GRR.riemannRochFor_closedImmersion"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "(P1): the pushforward of the twisted classes",
+      "decls": [
+        "GRR.projectionPushforwardFormula"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "(P2): the twisted classes generate rationally",
+      "decls": [
+        "GRR.projectionGeneration"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "(P3): the Riemann–Roch map on the twisted classes",
+      "decls": [
+        "GRR.projectionTauFormula"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Riemann–Roch for the projections $\\mathbb P^n_Y\\to Y$",
+      "decls": [
+        "GRR.riemannRochFor_projectiveSpaceOver"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The whole reduction in one statement",
+      "decls": [
+        "GRR.grothendieck_riemann_roch_of"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$\\chi$ is compatible with the pushforward to the point",
+      "decls": [
+        "GRR.eulerK_mk",
+        "GRR.eulerK_pushforwardK"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Riemann–Roch on the point",
+      "decls": [
+        "GRR.isSmoothFT_id",
+        "GRR.tau_point"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Hirzebruch–Riemann–Roch from the formula for $X\\to\\operatorname{Spec}k$",
+      "decls": [
+        "GRR.hirzebruch_riemann_roch_of"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Hirzebruch–Riemann–Roch",
+      "decls": [
+        "GRR.hirzebruch_riemann_roch"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Projection formula for higher direct images",
+      "decls": [
+        "GRR.higherDirectImageTensorIso"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Powers of $x$ through the series $e^{-jx}$",
+      "decls": [
+        "GRR.ProjectionGen.exists_X_pow_eq_sum_expNeg_pow"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$\\operatorname{ch}[\\mathcal O(-j)]=e^{-jh}$ on $\\mathbb P^n_Y$",
+      "decls": [
+        "GRR.ProjectionGen.ch_twistClass_neg"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Projective bundle formula for $\\mathbb P^n_Y$, rationally",
+      "decls": [
+        "GRR.ProjectionGen.exists_eq_sum_cap_pow_smoothGysinRational"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$h^{n+1}$ acts as zero on $\\mathbb P^n_Y$",
+      "decls": [
+        "GRR.ProjectionGen.cap_firstChernQ_pow_succ_eq_zero"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$\\operatorname{td}(T_{\\mathbb P^n_Y})=\\pi^*\\operatorname{td}(T_Y)\\cdot Q(h)^{n+1}$",
+      "decls": [
+        "GRR.toddTangent_projectiveSpaceOver"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Integration over the fibres of $\\mathbb P^n_Y\\to Y$",
+      "decls": [
+        "GRR.pushforward_cap_pullbackAQ_mul_ev"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The Koszul identity for Chern characters",
+      "decls": [
+        "GRR.ch_koszul"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Grothendieck–Riemann–Roch from (E) alone",
+      "decls": [
+        "GRR.grothendieck_riemann_roch_of_closedImmersionFormula"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Hirzebruch–Riemann–Roch on projective space",
+      "decls": [
+        "GRR.hirzebruch_riemann_roch_projectiveSpace"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Hirzebruch–Riemann–Roch from (E)",
+      "decls": [
+        "GRR.hirzebruch_riemann_roch_of_closedImmersionFormula"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The tangent sheaf is a vector bundle",
+      "decls": [
+        "GRR.isFiniteLocallyFree_tangentSheaf"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Properties of the Chern character of perfect complexes",
+      "decls": [
+        "GRR.perfectCh_congr",
+        "GRR.perfectCh_eq_zero",
+        "GRR.pullbackAQ_perfectCh",
+        "GRR.perfectCh_single",
+        "GRR.perfectCh_derivedTensor"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The Chern character of a coherent sheaf is that of its perfect complex",
+      "decls": [
+        "GRR.hasDefinedChernClasses_single_coherent",
+        "GRR.chK_mk_eq_perfectCh"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "(E) follows from its case of vector bundles",
+      "decls": [
+        "GRR.chK_pushforwardK_classOf_eq_perfectCh",
+        "GRR.closedImmersionFormula_of_bundles"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The deformation space is smooth and $i$ is a regular immersion",
+      "decls": [
+        "GRR.isSmoothFT_blowupAtInfinity",
+        "GRR.DeformationGeom.isRegularImmersion_of_isSmoothFT"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Base change of a flat module pushed forward along a closed immersion",
+      "decls": [
+        "GRR.derivedPullbackSinglePushforwardIsoOfTorIndependent"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$Q$ restricts to $i_*\\mathcal E$ on the fibre over $0$",
+      "decls": [
+        "GRR.deformationZeroFibreIso"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$Q$ restricts to the zero-section sheaf on the exceptional divisor",
+      "decls": [
+        "GRR.deformationExceptionalFibreIso"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "$Q$ vanishes on the strict transform",
+      "decls": [
+        "GRR.isZero_deformationStrictTransform"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Specialization of $[P]$ in the deformation space",
+      "decls": [
+        "GRR.exists_specialization_fundamentalClass"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The projective completion is smooth",
+      "decls": [
+        "GRR.isSmoothFT_projectiveCompletion",
+        "GRR.ZeroSectionRR.isIso_bundleProj_unitModule"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The Chern character of a sheaf on the zero section",
+      "decls": [
+        "GRR.perfectCh_pushforward_zeroSection",
+        "GRR.perfectCh_pushforward_zeroSection_unit"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The top Chern class of the Koszul module is the zero section",
+      "decls": [
+        "GRR.cap_topClass_fundamentalClass"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The Koszul module restricted to the zero section",
+      "decls": [
+        "GRR.pullback_zeroSection_classOf_dual_koszulModule"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Riemann–Roch for the zero section of $\\mathbb P(\\mathcal C\\oplus\\mathcal O)$",
+      "decls": [
+        "GRR.zeroSection_formula"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The normal class is the class of the normal bundle of Stacks",
+      "decls": [
+        "GRR.conormalSheafIsoConormalModule",
+        "GRR.normalClass_eq_classOf_dualSheaf_bundle"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "Deformation to the normal cone: from the zero section to $i$",
+      "decls": [
+        "GRR.closedImmersionFormula_core_of"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "The core case of (E) holds",
+      "decls": [
+        "GRR.closedImmersionFormula_core"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "(E) under composition and cancellation",
+      "decls": [
+        "GRR.closedImmersionFormula_comp",
+        "GRR.closedImmersionFormula_of_comp"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "(E) for the inclusion of an open and closed subscheme",
+      "decls": [
+        "GRR.closedImmersionFormula_ι"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "(E) can be checked on open and closed pieces",
+      "decls": [
+        "GRR.closedImmersionFormula_of_isClopenDecomposition",
+        "GRR.closedImmersionFormula_of_restrict"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "(E) in codimension zero, from the core case",
+      "decls": [
+        "GRR.closedImmersionFormula_of_codim_zero"
+      ],
+      "assumes": []
+    },
+    {
+      "title": "(E) for all closed immersions, from the core case",
+      "decls": [
+        "GRR.closedImmersionFormula_of_core"
+      ],
+      "assumes": []
+    }
+  ],
+  "fromMathlib": [
+    "$K_0(\\mathrm{Vect}\\,X)\\otimes\\mathbb Q\\cong CH_*(X)\\otimes\\mathbb Q$ on regular schemes",
+    "The Gysin map of a flat morphism is flat pullback",
+    "The Euler sequence on projective space over a ring",
+    "Flat pullback of the fundamental class of a smooth scheme",
+    "Projective morphisms are proper",
+    "Higher direct images of the twists on $\\mathbb P^n_Y$",
+    "The projective bundle formula along a projective tower",
+    "Pushing forward powers of the hyperplane class",
+    "The Gysin map commutes with the Chern character",
+    "Power sum classes of perfect complexes",
+    "The blowup at infinity of a closed immersion",
+    "Derived base change for Tor independent squares",
+    "Specialization at infinity and the localization sequence",
+    "The zero section of a projective completion: Koszul resolution and top Chern class",
+    "Blowups and closed immersions of smooth schemes",
+    "Capping with the fundamental class is bijective on a smooth scheme"
+  ],
+  "notFormal": []
+}

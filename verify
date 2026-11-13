@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Build the project and check every Formal card against what Lean reports.
+#
+# Building Lean runs code, since elaborators and #eval execute at compile time.
+# Read the files, or run this confined, if you did not write them.
+set -euo pipefail
+cd "$(dirname "$0")"
+
+# Building Stacks with Lake's default parallelism exhausted 24 GB of memory; three threads per
+# Lean process keeps it within that. Set LEAN_NUM_THREADS higher on a larger machine.
+export LEAN_NUM_THREADS="${LEAN_NUM_THREADS:-3}"
+
+lake exe cache get
+lake build
+lake env lean Verify.lean > verify-output.txt 2>&1 || true
+python3 check.py verify-output.txt
